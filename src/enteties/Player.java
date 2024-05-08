@@ -28,19 +28,6 @@ public class Player {
 
   }
 
-  // public Player createPlayer(String name, String type) {
-  // Player player = null;
-  // switch (type) {
-  // case "soldier": player = createSoldier(name);
-  // break;
-  // case "thief":
-  // break;
-  // case "witch":
-  // break;
-  // }
-  // return player;
-  // }
-
   public String getName() {
     return name;
   }
@@ -97,7 +84,7 @@ public class Player {
   public String getPotions() {
     StringBuilder potionsStringList = new StringBuilder();
     for (Potion p : potions) {
-      potionsStringList.append(p.getName())
+      potionsStringList.append(p.getUseText())
           .append("\n- ").append(p.getDescription());
     }
     return potionsStringList.toString();
