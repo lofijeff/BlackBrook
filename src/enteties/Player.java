@@ -65,7 +65,7 @@ public class Player {
   }
 
   public void setDamage(int damage) {
-    this.damage = damage;
+    this.damage = damage + weapon.getDamage();
   }
 
   public void defend(int attack) {

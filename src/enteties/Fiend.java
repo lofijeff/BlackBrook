@@ -7,16 +7,26 @@ public class Fiend {
   private int fullHealth;
   private int armour;
   private int magicDefence;
+  private int damage;
 
   public Fiend() {
   }
 
-  public Fiend(String name, int currentHealth, int fullHealth, int armour, int magicDefence) {
+  public Fiend(String name, int currentHealth, int fullHealth, int armour, int magicDefence, int damage) {
     this.name = name;
     this.currentHealth = currentHealth;
     this.fullHealth = fullHealth;
     this.armour = armour;
     this.magicDefence = magicDefence;
+    this.damage = damage;
+  }
+
+  public int getDamage() {
+    return damage;
+  }
+
+  public void setDamage(int damage) {
+    this.damage = damage;
   }
 
   public String getName() {
