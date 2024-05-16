@@ -25,25 +25,6 @@ public class BattleMethods {
   public void goblinBattle(Battle battle) {
     System.out.println("         ~~~~ " + battle.getPlayer().getName().toUpperCase() + " VS GOBLIN ~~~~");
     splashScreen.fight();
-    // if (player.getType().equals("witch")) {
-    //
-    // }
-    // System.out.println("[1]HIT\n[2]DEFEND\n[3]FLEE");
-    // Fiend goblin = battle.getFiend();
-    // int pDamage = player.getDamage();
-    // int fDamage = goblin.getDamage();
-    //
-    // switch (choice) {
-    // case 1:// vad händer när man slåss?
-    // System.out.println("You try slapping that bitch with your " +
-    // player.getWeapon().getName() + ". ");
-    // System.out.println(goblin.getName() + " took" + pDamage + ". Big whoop!");
-    // break;
-    // case 2:// vad händer när man deffar?
-    // break;
-    // case 3:// vad händer när man flyr....??:
-    // break;
-    // }
     int choice;
     int fiendHealth = battle.getFiend().getCurrentHealth();
     int fiendHit = battle.getFiend().getDamage();
@@ -58,11 +39,9 @@ public class BattleMethods {
           fiendHealth -= playerHit;
           break;
         case 2:
-          break;
-        case 3:
+          playerHealth -= fiendHit;
           break;
       }
-
     }
   }
 }
