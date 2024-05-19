@@ -1,4 +1,4 @@
-import enteties.Player;
+import enteties.*;
 import items.Weapon;
 import items.Potion;
 
@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Random;
 
 public class CharacterCreation {
-  Player player;
   List<Potion> potions;
 
   public Player createSoldier(String name) {

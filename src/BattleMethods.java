@@ -36,12 +36,26 @@ public class BattleMethods {
       choice = scan.nextInt();
       switch (choice) {
         case 1:
-          fiendHealth -= playerHit;
+          fiendHealth -= generateDamage(player);
+          System.out.println(battle.getFiend().getName() + " took " + playerHit + " damage!");
           break;
         case 2:
           playerHealth -= fiendHit;
           break;
       }
+    }
+  }
+
+  public int generateDamage(Player player) {
+    Random random = new Random();
+    int randomInt = random.nextInt(100) + 1;
+    if (randomInt >= 55 && player.getType().equals("thief")) {
+      return player.getWeapon().getCriticalDamage();
+    }
+    if (randomInt >= 80 && (player.getType().equals("witch") || player.getType().equals("soldier"))) {
+      return player.getWeapon().getCriticalDamage();
+    } else {
+      return player.getWeapon().getDamage();
     }
   }
 }

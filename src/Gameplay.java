@@ -9,7 +9,14 @@ public class Gameplay {
   private Scanner scan = new Scanner(System.in);
   private int choice = 0;
   private CharacterCreation characterCreation = new CharacterCreation();
-  Player player = new Player();
+
+  public static void wait(int milliseconds) {
+    try {
+      Thread.sleep(milliseconds);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 
   public void start() {
     splash.blackBrookLogo();
@@ -39,6 +46,7 @@ public class Gameplay {
 
   public void newGameFirstPart() {
     // TODO lägg till sparningsfunktionen
+    Player player = new Player();
     System.out.println("Hey. What is your name?");
     scan.nextLine();
     String name = scan.nextLine();
@@ -48,20 +56,29 @@ public class Gameplay {
     switch (choice) {
       case 1:
         player = characterCreation.createSoldier(name);
+        adventurePartOne(player);
         break;
       case 2:
         player = characterCreation.createThief(name);
+        adventurePartOne(player);
         break;
       case 3:
         player = characterCreation.createWitch(name);
-        break;
-      default:
         adventurePartOne(player);
+        break;
     }
   }
 
   public void adventurePartOne(Player player) {
-    System.out.println("Bla bla bla, story. Ojdå dags för BATTLE baserat på ett val!!!");
+    System.out.println(".");
+    wait(500);
+    System.out.println(".");
+    wait(500);
+    System.out.println(".");
+    wait(500);
+    System.out.println(
+        "You walk outside of the decreped hut.\nThere is a clear path to your right, that looks like it leads\ninto the woods.");
+    scan.nextLine();
     choice = scan.nextInt();
     switch (choice) {
       case 1:
