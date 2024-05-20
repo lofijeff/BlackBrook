@@ -22,7 +22,11 @@ public class Potion {
   }
 
   public String getThrowText() {
-    return throwText;
+    if (throwText.isBlank()) {
+      return "You throw the potion.";
+    } else {
+      return throwText;
+    }
   }
 
   public void setThrowText(String throwText) {

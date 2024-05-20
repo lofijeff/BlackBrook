@@ -1,8 +1,10 @@
 import art.SplashScreens;
 import enteties.Player;
+import items.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Gameplay {
   private SplashScreens splash = new SplashScreens();
@@ -77,12 +79,51 @@ public class Gameplay {
     System.out.println(".");
     wait(500);
     System.out.println(
-        "You walk outside of the decreped hut.\nThere is a clear path to your right, that looks like it leads\ninto the woods.");
+        "You walk outside of the decreped hut.\nThere is a clear path to your right, that looks like it leads\ninto the woods.\n[1]Left\n[2]Right");
     scan.nextLine();
     choice = scan.nextInt();
     switch (choice) {
       case 1:
         break;
+    }
+  }
+
+  public void encounterRandomizer() {
+
+  }
+
+  public Object lootRandomizer() {
+    Random random = new Random();
+    int random100 = random.nextInt(100) + 1;
+    if (random100 < 100) {
+      int random50 = random.nextInt(50) + 1;
+      Potion potion = new Potion();
+      potion.setType("health potion");
+      potion.setHealthRestored(random50);
+      return potion;
+    } else if (random100 < 90) {
+      int random50 = random.nextInt(50) + 1;
+      Potion potion = new Potion();
+      potion.setType("fire potion");
+      potion.setDamage(random50);
+      return potion;
+    } else if (random100 < 80) {
+      int random50 = random.nextInt(50) + 1;
+      Potion potion = new Potion();
+      potion.setType("poison potion");
+      potion.setDamage(random50);
+      return potion;
+    } else if (random100 < 70) {
+      Potion potion = new Potion();
+      potion.setType("mana potion");
+      potion.setHealthRestored(5);
+      return potion;
+    } else if (random100 < 60) {
+      return "shiet";
+    }
+
+    else {
+      return "you suck";
     }
   }
 }
