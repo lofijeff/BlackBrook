@@ -1,5 +1,7 @@
 package items;
 
+import java.util.Random;
+
 public class Potion {
 
   String useText;
@@ -110,5 +112,31 @@ public class Potion {
     potion.setUseText("You drink it. It feels like a cold stream down your throat.");
     potion.setThrowText("You throw it. Nothing happends.");
     return potion;
+  }
+
+  public Potion potionRandomizer() {
+    Potion potion = new Potion();
+    Random random1 = new Random();
+    int randomHealing = random1.nextInt(50) + 1;
+    Random random2 = new Random();
+    int randomPot = random2.nextInt(4) + 1;
+    Random random3 = new Random();
+    int randomDamage = random3.nextInt();
+    switch (randomPot) {
+      case 1:
+        potion = getHealthPotion(randomHealing);
+        return potion;
+      case 2:
+        potion = getPoisonPotion(randomHealing, randomDamage);
+        return potion;
+      case 3:
+        potion = getFirePotion(randomDamage);
+        return potion;
+      case 4:
+        potion = getManaPotion(randomHealing);
+        return potion;
+      default:
+        throw new IllegalStateException("ERROR, I ONLY ACCEPT NUMBER ONE THROUGH FOUR");
+    }
   }
 }

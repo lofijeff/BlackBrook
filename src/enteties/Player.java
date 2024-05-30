@@ -16,7 +16,7 @@ public class Player {
   private int armour;
 
   private int damage;
-  List<Potion> potions;
+  public List<Potion> potions;
   Weapon weapon;
 
   public Player() {

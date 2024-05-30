@@ -84,12 +84,29 @@ public class Gameplay {
     choice = scan.nextInt();
     switch (choice) {
       case 1:
+        encounterRandomizer(player);
         break;
     }
   }
 
-  public void encounterRandomizer() {
+  public void encounterRandomizer(Player player) {
+    System.out.println("Lets pretend that there were just a GREAT battle! Lets see if we can get you some loot.");
+    wait(250);
+    System.out.println(lootType(player));
+  }
 
+  public String lootType(Player player) {
+    Object loot = lootRandomizer();
+    if (loot.getClass().getName().equals("items.Potion")) {
+      if (loot instanceof Potion) {
+        Potion potion = (Potion) loot;
+        player.potions.add(loot);
+      }
+      return "potion";
+    } else if (loot.getClass().getName().equals("items.Weapon")) {
+      return "weapon";
+    }
+    return "UNDEFINED LOOT";
   }
 
   public Object lootRandomizer() {
@@ -119,11 +136,39 @@ public class Gameplay {
       potion.setHealthRestored(5);
       return potion;
     } else if (random100 < 60) {
-      return "shiet";
-    }
-
-    else {
+      return weaponRandomizer();
+    } else {
       return "you suck";
+    }
+  }
+
+  public Weapon weaponRandomizer() {
+    Random random = new Random();
+    Weapon weapon = new Weapon();
+    int random3 = random.nextInt(3) + 1;
+    int randomSoldier = random.nextInt(26) + 15;
+    int randomSoldierCrit = random.nextInt(randomSoldier + 10) + 1;
+    int randomThief = random.nextInt(11) + 15;
+    int randomThiefCrit = random.nextInt(randomThief + 8) + 1;
+    int randomWitch = random.nextInt(11) + 8;
+    int randomWitchCrit = random.nextInt(randomWitch + 7) + 1;
+    int randomWitchSpell = random.nextInt(15) + 1;
+    if (random3 == 1) {
+      weapon.setName("sword");
+      weapon.setDamage(randomSoldier);
+      weapon.setCriticalDamage(randomSoldierCrit);
+      return weapon;
+    } else if (random3 == 2) {
+      weapon.setName("dagger");
+      weapon.setDamage(randomThief);
+      weapon.setCriticalDamage(randomThiefCrit);
+      return weapon;
+    } else {
+      weapon.setName("staff");
+      weapon.setDamage(randomWitch);
+      weapon.setCriticalDamage(randomWitchCrit);
+      weapon.setSpellDamage(randomWitchSpell);
+      return weapon;
     }
   }
 }

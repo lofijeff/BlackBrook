@@ -52,7 +52,12 @@ public class BattleMethods {
     if (randomInt >= 55 && player.getType().equals("thief")) {
       return player.getWeapon().getCriticalDamage();
     }
-    if (randomInt >= 80 && (player.getType().equals("witch") || player.getType().equals("soldier"))) {
+    if (randomInt >= 80 && player.getType().equals("witch")) {
+      return player.getWeapon().getCriticalDamage() + player.getWeapon().getSpellDamage();
+    } else if (randomInt <= 79 && player.getType().equals("witch")) {
+      return player.getWeapon().getDamage() + player.getWeapon().getSpellDamage();
+    }
+    if (randomInt >= 80 && player.getType().equals("soldier")) {
       return player.getWeapon().getCriticalDamage();
     } else {
       return player.getWeapon().getDamage();
